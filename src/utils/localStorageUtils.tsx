@@ -3,7 +3,7 @@ export function getItem(key: string) {
   return item ? item : null;
 }
 
-export function setItem(data: any, key: string) {
+export function setItem( key: string, data: any) {
   localStorage.setItem(key, data);
 }
 

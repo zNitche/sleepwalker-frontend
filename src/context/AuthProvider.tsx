@@ -1,27 +1,41 @@
 import { useState, useEffect } from "react"
 import { AuthContext } from "./contexes"
-import { getItem, removeItem, setItem } from "../utils/localStorageUtils"
+import { getAuthToken, removeAuthToken, setAuthToken } from "../utils/authUtils"
+import { httpPost } from "../utils/httpUtils"
 
 interface IAuthProviderProps {
   children: React.ReactNode
 }
 
 export default function AuthProvider({ children }: IAuthProviderProps) {
-  const AUTH_TOKEN_KEY = "auth_token"
-
-  let [authToken, setAuthToken] = useState(() => { return getItem(AUTH_TOKEN_KEY) })
+  let [authToken, setAuthTokenValue] = useState(() => { return getAuthToken() })
 
   useEffect(() => {
     
   }, [])
 
   async function login(username: string, password: string) {
-    
+    const response = await httpPost("/auth/login/", {
+      username: username,
+      password: password
+    }, true)
+
+    if (response.status == 200) {
+      const token = response.data.token
+      setAuthTokenValue(token)
+      setAuthToken(token)
+
+      return true
+    } else {
+      return false
+    }
   }
 
   async function logout() {
-    setAuthToken(null)
-    removeItem(AUTH_TOKEN_KEY)
+    httpPost("/auth/logout/")
+
+    setAuthTokenValue("")
+    removeAuthToken()
   }
 
   let contextData = {
