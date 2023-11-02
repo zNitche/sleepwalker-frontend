@@ -38,7 +38,7 @@ export default function AuthProvider({ children }: IAuthProviderProps) {
     removeAuthToken()
   }
 
-  let contextData = {
+  const contextData = {
     authToken: authToken,
     login: login,
     logout: logout
