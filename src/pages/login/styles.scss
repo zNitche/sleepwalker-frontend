@@ -1,0 +1,67 @@
+@import "bootstrap/scss/bootstrap.scss";
+@import "../../styles/variables";
+
+
+.login-page-wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $backgroundPrimaryColor;
+
+    .login-panel-wrapper {
+        background-color: $backgroundSecondaryColor;
+        padding: 25px;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        color: $fontWhite;
+
+        .logo-wrapper {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+
+            .img {
+                width: 64px;
+                height: 64px;
+            }
+
+            .title {
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
+
+        .login-form-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            .MuiFormLabel-root,
+            .MuiInputBase-input {
+                color: $fontWhite;
+            }
+
+            .MuiOutlinedInput-notchedOutline {
+                border-color: #fff !important;
+            }
+
+            button {
+                background-color: $primaryBlueColor;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .login-page-wrapper {
+        .login-panel-wrapper {
+            width: 100%;
+            margin: 5px;
+        }
+    }
+}

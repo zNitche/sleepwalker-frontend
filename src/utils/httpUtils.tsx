@@ -58,8 +58,6 @@ export async function httpPost(url: string, payload?: any, notAuth?: boolean) {
       body: JSON.stringify(payload)
     })
 
-    console.log
-
     response.status = res.status
     response.data = await res.json()
   } catch (error) { }
