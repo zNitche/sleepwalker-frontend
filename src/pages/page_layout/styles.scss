@@ -1,5 +1,11 @@
+@import "../../styles/variables";
+
 .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    
     .page-content-wrapper {
-        
+        display: flex;
+        flex-direction: column;
     }
 }
