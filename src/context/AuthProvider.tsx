@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { AuthContext } from "./contexes"
 import { getAuthToken, removeAuthToken, setAuthToken } from "../utils/authUtils"
-import { httpPost } from "../utils/httpUtils"
+import { httpGet, httpPost } from "../utils/httpUtils"
 
 interface IAuthProviderProps {
   children: React.ReactNode
@@ -11,8 +11,17 @@ export default function AuthProvider({ children }: IAuthProviderProps) {
   let [authToken, setAuthTokenValue] = useState(() => { return getAuthToken() })
 
   useEffect(() => {
-    
+    checkAuth()
   }, [])
+
+  async function checkAuth() {
+    const response = await httpGet("/auth-check")
+
+    if (response.status == 401) {
+      setAuthTokenValue("")
+      removeAuthToken()
+    }
+  }
 
   async function login(username: string, password: string) {
     const response = await httpPost("/auth/login/", {
