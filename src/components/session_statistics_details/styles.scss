@@ -1,0 +1,33 @@
+@import "../../styles/variables";
+@import "bootstrap/scss/bootstrap.scss";
+
+
+.session-statistics-details-wrapper {
+    background-color: $backgroundSecondaryColor;
+    padding: 15px;
+    width: 60%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .title {
+        font-weight: 500;
+    }
+
+    .item-wrapper {
+        display: flex;
+        gap: 5px;
+    }
+
+    .item-value {
+        margin-left: auto;
+    }
+}
+
+
+@include media-breakpoint-down(sm) {
+    .session-statistics-details-wrapper {
+        width: 100%;
+    }
+}

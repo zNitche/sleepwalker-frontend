@@ -1,0 +1,12 @@
+@import "bootstrap/scss/bootstrap.scss";
+@import "../../styles/variables";
+
+
+.home-page-wrapper {
+    padding: 0 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
