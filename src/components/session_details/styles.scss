@@ -4,7 +4,7 @@
 .session-details-wrapper {
     background-color: $backgroundSecondaryColor;
     padding: 15px;
-    width: 60%;
+    width: 100%;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -31,6 +31,6 @@
 
 @include media-breakpoint-down(sm) {
     .session-details-wrapper {
-        width: 100%;
+       
     }
 }

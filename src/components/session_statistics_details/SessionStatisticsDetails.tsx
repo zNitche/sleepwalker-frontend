@@ -2,6 +2,8 @@ import "./styles.scss"
 import CalendarIcon from "../../assets/svg/icons/calendar.svg"
 import NumbersIcon from "../../assets/svg/icons/numbers.svg"
 import { ILogsSessionsStatistics } from "../../interfaces/ILogsSessionsStatistics"
+import { BarChart } from "../bar_chart/BarChart"
+import { IChartDataset } from "../../interfaces/IChartDataset"
 
 interface SessionStatisticsDetailsProps {
   data: ILogsSessionsStatistics
@@ -17,9 +19,26 @@ export default function SessionStatisticsDetails({ data }: SessionStatisticsDeta
   }
 
   function renderEventsChart() {
+    const labels: string[] = []
+    const values: number[] = []
+
+    for (let date in data.sleepwalking_events) {
+      const dateObj = new Date(date)
+      const dateString = `${dateObj.getDay() + 1}-${dateObj.getMonth() + 1}-${dateObj.getFullYear()}`
+
+      labels.push(dateString)
+      values.push(data.sleepwalking_events[date])
+    }
+
+    const dataset: IChartDataset = {
+      label: "sleepwalking events",
+      data: values,
+      backgroundColor: "#fff"
+    }
+
     return (
-      <div className="">
-        
+      <div className="statistics-chart-wrapper">
+        <BarChart labels={labels} datasets={[dataset]} />
       </div>
     )
   }
