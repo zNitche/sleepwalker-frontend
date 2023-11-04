@@ -16,15 +16,13 @@ export default function NotificationSnackbar({ message, autoHideDuration, type, 
   }, [])
 
   return (
-    <>
-      <div className={`notification-snackbar ${type}-notification`}>
-        <div className="content">
-          {message}
-        </div>
-        <div className="actions">
-          <img src={CloseIcon} onClick={handleClose} />
-        </div>
+    <div className={`notification-snackbar ${type}-notification`}>
+      <div className="content">
+        {message}
       </div>
-    </>
-  );
+      <div className="actions">
+        <img src={CloseIcon} onClick={handleClose} />
+      </div>
+    </div>
+  )
 }

@@ -29,39 +29,37 @@ export default function LoginPage() {
   }
 
   return (
-    <>
-      <div className="login-page-wrapper">
-        <div className="login-panel-wrapper">
-          <div className="logo-wrapper">
-            <img src={SleepwalkerLogo} />
-            <span className="title">Sleepwalker Dashboard</span>
-          </div>
-          <form className="login-form-wrapper" onSubmit={handleLogin}>
-            <TextField
-              name="username"
-              type="text"
-              label="Username"
-              variant="outlined"
-              fullWidth
-            />
-            <TextField
-              name="password"
-              type="password"
-              label="Password"
-              variant="outlined"
-              fullWidth
-            />
-            <Button
-              type="submit"
-              className="login-btn"
-              variant="contained"
-              disabled={loading}
-            >
-              Sign In
-            </Button>
-          </form>
+    <div className="login-page-wrapper">
+      <div className="login-panel-wrapper">
+        <div className="logo-wrapper">
+          <img src={SleepwalkerLogo} />
+          <span className="title">Sleepwalker Dashboard</span>
         </div>
+        <form className="login-form-wrapper" onSubmit={handleLogin}>
+          <TextField
+            name="username"
+            type="text"
+            label="Username"
+            variant="outlined"
+            fullWidth
+          />
+          <TextField
+            name="password"
+            type="password"
+            label="Password"
+            variant="outlined"
+            fullWidth
+          />
+          <Button
+            type="submit"
+            className="login-btn"
+            variant="contained"
+            disabled={loading}
+          >
+            Sign In
+          </Button>
+        </form>
       </div>
-    </>
+    </div>
   )
 }

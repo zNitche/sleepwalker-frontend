@@ -45,10 +45,8 @@ export default function HomePage() {
   }
 
   return (
-    <>
-      <div className="home-page-wrapper">
-        {isLoading ? <FlexLoader /> : renderContent()}
-      </div>
-    </>
+    <div className="home-page-wrapper">
+      {isLoading ? <FlexLoader /> : renderContent()}
+    </div>
   )
 }

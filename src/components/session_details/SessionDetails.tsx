@@ -22,10 +22,8 @@ export default function SessionDetails({ data }: SessionDetailsProps) {
   }
 
   return (
-    <>
-      <div className={`session-details-wrapper ${data != null ? "active-session" : ""}`}>
-        {data == null ? "There is no session running" : renderDetails()}
-      </div>
-    </>
+    <div className={`session-details-wrapper ${data != null ? "active-session" : ""}`}>
+      {data == null ? "There is no session running" : renderDetails()}
+    </div>
   )
 }

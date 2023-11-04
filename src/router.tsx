@@ -9,11 +9,9 @@ import PageLayout from './pages/page_layout/PageLayout'
 export default function RouterProvider() {
   function privateRoutes() {
     return (
-      <>
-        <Route path="/" element={<PageLayout />}>
-          <Route index element={<HomePage />} />
-        </Route>
-      </>
+      <Route path="/" element={<PageLayout />}>
+        <Route index element={<HomePage />} />
+      </Route>
     )
   }
 
@@ -34,18 +32,16 @@ export default function RouterProvider() {
   }
 
   return (
-    <>
-      <Routes>
-        <Route element={<PrivateRoute />}>
-          {privateRoutes()}
-        </Route>
-        {publicRoutes()}
-        <Route element={<NotAuthOnlyRoute />}>
-          {nonAuthOnlyRoutes()}
-        </Route>
+    <Routes>
+      <Route element={<PrivateRoute />}>
+        {privateRoutes()}
+      </Route>
+      {publicRoutes()}
+      <Route element={<NotAuthOnlyRoute />}>
+        {nonAuthOnlyRoutes()}
+      </Route>
 
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </>
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   )
 }

@@ -12,22 +12,20 @@ export default function NavPanel() {
   let { logout } = useContext(AuthContext)
 
   return (
-    <>
-      <div className="nav-panel-wrapper">
-        <img className="logo" src={SleepWalkerLogo} />
-        <NavLink className="nav-item" to={"/"}>
-            <img src={HomeIcon} />
-        </NavLink>
-        <NavLink className="nav-item" to={"/data"}>
-          <img src={DataIcon} />
-        </NavLink>
-        <NavLink className="nav-item" to={"/settings"}>
-          <img src={SettingsIcon} />
-        </NavLink>
-        <div className="nav-item logout">
-          <img src={LogoutIcon} onClick={() => { logout() }} />
-        </div>
+    <div className="nav-panel-wrapper">
+      <img className="logo" src={SleepWalkerLogo} />
+      <NavLink className="nav-item" to={"/"}>
+        <img src={HomeIcon} />
+      </NavLink>
+      <NavLink className="nav-item" to={"/data"}>
+        <img src={DataIcon} />
+      </NavLink>
+      <NavLink className="nav-item" to={"/settings"}>
+        <img src={SettingsIcon} />
+      </NavLink>
+      <div className="nav-item logout">
+        <img src={LogoutIcon} onClick={() => { logout() }} />
       </div>
-    </>
+    </div>
   )
 }

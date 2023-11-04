@@ -4,10 +4,8 @@ import "./styles.scss"
 
 export default function FlexLoader() {
   return (
-    <>
-      <div className="flex-loader-wrapper">
-        <CircularProgress />
-      </div>
-    </>
+    <div className="flex-loader-wrapper">
+      <CircularProgress />
+    </div>
   )
 }

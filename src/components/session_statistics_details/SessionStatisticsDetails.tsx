@@ -11,11 +11,7 @@ interface SessionStatisticsDetailsProps {
 
 export default function SessionStatisticsDetails({ data }: SessionStatisticsDetailsProps) {
   function renderDate(dateString: string) {
-    if (dateString) {
-      return new Date(dateString).toLocaleString()
-    } else {
-      return ("-")
-    }
+    return dateString ? new Date(dateString).toLocaleString() : "-"
   }
 
   function renderEventsChart() {
