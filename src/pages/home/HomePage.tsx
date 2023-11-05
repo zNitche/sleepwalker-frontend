@@ -14,23 +14,30 @@ export default function HomePage() {
   const [statistics, setStatistics] = useState<ILogsSessionsStatistics | null>(null)
 
   useEffect(() => {
-    getData()
+    setupData()
   }, [])
 
-  async function getData() {
-    setIsLoading(true)
-
+  async function getCurrentSession() {
     const response = await httpGet("/sessions/current/")
 
     if (response.status == 200) {
       setCurrentSession(response.data as ILogsSession)
     }
+  }
 
+  async function getSessionsStatistics() {
     const statsResponse = await httpGet("/sessions/statistics")
 
     if (statsResponse.status == 200) {
       setStatistics(statsResponse.data as ILogsSessionsStatistics)
     }
+  }
+
+  async function setupData() {
+    setIsLoading(true)
+
+    await getCurrentSession()
+    await getSessionsStatistics()
 
     setIsLoading(false)
   }

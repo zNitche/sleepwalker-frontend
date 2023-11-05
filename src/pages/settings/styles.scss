@@ -1,0 +1,51 @@
+@import "bootstrap/scss/bootstrap.scss";
+@import "../../styles/variables";
+
+
+.settings-page-wrapper {
+    padding: 0 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 60%;
+
+    .section-wrapper {
+        background-color: $backgroundSecondaryColor;
+        padding: 15px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .title {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            button {
+                background-color: $primaryBlueColor;
+            }
+        }
+    }
+
+    .api-key-wrapper {
+        .Mui-disabled {
+            color: #fff !important;
+            -webkit-text-fill-color: unset;
+        }
+    }
+}
+
+
+@include media-breakpoint-down(sm) {
+    .settings-page-wrapper {
+        width: 100%;
+    }
+}
