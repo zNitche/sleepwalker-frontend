@@ -17,7 +17,7 @@ export default function NavPanel() {
       <NavLink className="nav-item" to={"/"}>
         <img src={HomeIcon} />
       </NavLink>
-      <NavLink className="nav-item" to={"/data"}>
+      <NavLink className="nav-item" to={"/sessions"}>
         <img src={DataIcon} />
       </NavLink>
       <NavLink className="nav-item" to={"/settings"}>

@@ -6,6 +6,7 @@ import LoginPage from './pages/login/LoginPage'
 import NotFoundPage from './pages/not_found/NotFoundPage'
 import PageLayout from './pages/page_layout/PageLayout'
 import SettingsPage from './pages/settings/SettingsPage'
+import SessionsPage from './pages/sessions_page/SessionsPage'
 
 export default function RouterProvider() {
   function privateRoutes() {
@@ -13,6 +14,7 @@ export default function RouterProvider() {
       <Route path="/" element={<PageLayout />}>
         <Route index element={<HomePage />} />
         <Route path={"/settings"} element={<SettingsPage />} />
+        <Route path={"/sessions"} element={<SessionsPage />} />
       </Route>
     )
   }
