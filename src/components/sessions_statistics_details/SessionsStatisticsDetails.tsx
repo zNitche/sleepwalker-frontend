@@ -5,11 +5,11 @@ import { ILogsSessionsStatistics } from "../../interfaces/ILogsSessionsStatistic
 import { BarChart } from "../bar_chart/BarChart"
 import { IChartDataset } from "../../interfaces/IChartDataset"
 
-interface SessionStatisticsDetailsProps {
+interface SessionsStatisticsDetailsProps {
   data: ILogsSessionsStatistics
 }
 
-export default function SessionStatisticsDetails({ data }: SessionStatisticsDetailsProps) {
+export default function SessionsStatisticsDetails({ data }: SessionsStatisticsDetailsProps) {
   function renderDate(dateString: string) {
     return dateString ? new Date(dateString).toLocaleString() : "-"
   }
@@ -41,7 +41,7 @@ export default function SessionStatisticsDetails({ data }: SessionStatisticsDeta
 
   return (
     <>
-      <div className="session-statistics-details-wrapper">
+      <div className="sessions-statistics-details-wrapper">
         <span className="title">Sessions Statistics</span>
         <div className="item-wrapper">
           <img src={NumbersIcon} />

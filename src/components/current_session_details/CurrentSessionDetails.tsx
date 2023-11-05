@@ -2,11 +2,11 @@ import "./styles.scss"
 import { ILogsSession } from "../../interfaces/ILogsSession"
 import CalendarIcon from "../../assets/svg/icons/calendar.svg"
 
-interface SessionDetailsProps {
+interface CurrentSessionDetailsProps {
   data: ILogsSession | null
 }
 
-export default function SessionDetails({ data }: SessionDetailsProps) {
+export default function CurrentSessionDetails({ data }: CurrentSessionDetailsProps) {
   function renderDetails() {
     return (
       <>
@@ -22,7 +22,7 @@ export default function SessionDetails({ data }: SessionDetailsProps) {
   }
 
   return (
-    <div className={`session-details-wrapper ${data != null ? "active-session" : ""}`}>
+    <div className={`current-session-details-wrapper ${data != null ? "active-session" : ""}`}>
       {data == null ? "There is no session running" : renderDetails()}
     </div>
   )

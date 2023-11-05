@@ -1,7 +1,7 @@
 @import "../../styles/variables";
 @import "bootstrap/scss/bootstrap.scss";
 
-.session-details-wrapper {
+.current-session-details-wrapper {
     background-color: $backgroundSecondaryColor;
     padding: 15px;
     width: 100%;
@@ -30,7 +30,7 @@
 
 
 @include media-breakpoint-down(sm) {
-    .session-details-wrapper {
+    .current-session-details-wrapper {
        
     }
 }

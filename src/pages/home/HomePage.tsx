@@ -3,9 +3,9 @@ import FlexLoader from "../../components/flex_loader/FlexLoader"
 import "./styles.scss"
 import { httpGet } from "../../utils/httpUtils"
 import { ILogsSession } from "../../interfaces/ILogsSession"
-import SessionDetails from "../../components/session_details/SessionDetails"
+import CurrentSessionDetails from "../../components/current_session_details/CurrentSessionDetails"
 import { ILogsSessionsStatistics } from "../../interfaces/ILogsSessionsStatistics"
-import SessionStatisticsDetails from "../../components/session_statistics_details/SessionStatisticsDetails"
+import SessionsStatisticsDetails from "../../components/sessions_statistics_details/SessionsStatisticsDetails"
 
 
 export default function HomePage() {
@@ -38,8 +38,8 @@ export default function HomePage() {
   function renderContent() {
     return (
       <>
-        <SessionDetails data={currentSession} />
-        {statistics != null ? <SessionStatisticsDetails data={statistics} /> : null}
+        <CurrentSessionDetails data={currentSession} />
+        {statistics != null ? <SessionsStatisticsDetails data={statistics} /> : null}
       </>
     )
   }
