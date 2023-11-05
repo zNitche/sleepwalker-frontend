@@ -3,6 +3,8 @@ import AuthProvider from "./context/AuthProvider"
 import RouterProvider from "./router"
 import "./styles/styles.scss"
 import NotificationsProvider from "./context/NotificationsProvider"
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 function App() {
   return (
@@ -10,7 +12,9 @@ function App() {
       <BrowserRouter>
         <AuthProvider>
           <NotificationsProvider>
-            <RouterProvider />
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <RouterProvider />
+            </LocalizationProvider>
           </NotificationsProvider>
         </AuthProvider>
       </BrowserRouter>
