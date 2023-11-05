@@ -19,10 +19,7 @@ export default function SessionsStatisticsDetails({ data }: SessionsStatisticsDe
     const values: number[] = []
 
     for (let date in data.sleepwalking_events) {
-      const dateObj = new Date(date)
-      const dateString = `${dateObj.getDay() + 1}-${dateObj.getMonth() + 1}-${dateObj.getFullYear()}`
-
-      labels.push(dateString)
+      labels.push(date.split("T")[0])
       values.push(data.sleepwalking_events[date])
     }
 

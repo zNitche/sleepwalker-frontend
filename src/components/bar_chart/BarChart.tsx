@@ -36,7 +36,8 @@ export function BarChart({ labels, datasets }: BarChartProps) {
       },
       y: {
         ticks: {
-          color: "#fff"
+          color: "#fff",
+          stepSize: 1
         }
       }
     },
