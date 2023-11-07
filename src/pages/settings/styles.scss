@@ -7,30 +7,6 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-
-    .section-wrapper {
-        background-color: $backgroundSecondaryColor;
-        padding: 15px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-
-        .title {
-            font-size: 18px;
-            font-weight: 500;
-        }
-
-        .content {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-
-            button {
-                background-color: $primaryBlueColor;
-            }
-        }
-    }
 }
 
 
