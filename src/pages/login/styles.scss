@@ -40,15 +40,6 @@
             flex-direction: column;
             gap: 15px;
 
-            .MuiFormLabel-root,
-            .MuiInputBase-input {
-                color: $fontWhite;
-            }
-
-            .MuiOutlinedInput-notchedOutline {
-                border-color: #fff !important;
-            }
-
             button {
                 background-color: $primaryBlueColor;
             }

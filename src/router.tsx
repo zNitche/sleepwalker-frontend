@@ -6,7 +6,7 @@ import LoginPage from './pages/login/LoginPage'
 import NotFoundPage from './pages/not_found/NotFoundPage'
 import PageLayout from './pages/page_layout/PageLayout'
 import SettingsPage from './pages/settings/SettingsPage'
-import SessionsPage from './pages/sessions_page/SessionsPage'
+import SessionsPage from './pages/sessions/SessionsPage'
 
 export default function RouterProvider() {
   function privateRoutes() {
