@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext, Dispatch, SetStateAction, ChangeEvent } from "react"
 import { Button, TextField } from "@mui/material"
-import FlexLoader from "../../components/flex_loader/FlexLoader"
 import "./styles.scss"
 import { httpGet, httpPut } from "../../utils/httpUtils"
 import { NotificationsContext } from "../../context/contexes"
@@ -23,7 +22,7 @@ export default function UserSettings({ setIsLoading }: UserSettingsProps) {
   async function setupData() {
     setIsLoading(true)
 
-    const response = await httpGet("/auth/user/settings/")
+    const response = await httpGet("/user/settings/")
 
     if (response.status == 200) {
       setHbPercentageThreshold(response.data.sw_detection_heart_beat_percentage_threshold)
@@ -40,8 +39,8 @@ export default function UserSettings({ setIsLoading }: UserSettingsProps) {
   async function saveUserSettings() {
     setIsSavingInProgress(true)
 
-    const response = await httpPut("/auth/user/settings/", {
-      "sw_detection_heart_beat_percentage_threshold": hbPercentageThreshold
+    const response = await httpPut("/user/settings/", {
+      sw_detection_heart_beat_percentage_threshold: hbPercentageThreshold
     })
 
     if (response.status == 200) {
