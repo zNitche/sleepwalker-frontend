@@ -12,6 +12,19 @@
     margin-bottom: 30px;
 }
 
+.MuiFormLabel-root,
+.MuiInputBase-input {
+    color: $fontWhite !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+    border-color: #fff !important;
+}
+
+.Mui-disabled {
+    -webkit-text-fill-color: unset !important;
+}
+
 @include media-breakpoint-down(sm) {
     .notifications-wrapper {
         right: unset;
