@@ -1,4 +1,3 @@
-import "./styles.scss"
 import { ILogsSession } from "../../interfaces/ILogsSession"
 import CalendarIcon from "../../assets/svg/icons/calendar.svg"
 import { useNavigate } from "react-router-dom"
@@ -7,17 +6,21 @@ interface CurrentSessionDetailsProps {
   data: ILogsSession | null
 }
 
-export default function CurrentSessionDetails({ data }: CurrentSessionDetailsProps) {
+export default function SessionDetails({ data }: CurrentSessionDetailsProps) {
   const navigate = useNavigate()
 
   function renderDetails() {
     return (
       <>
         <div className="session-details-items">
-          <span className="title">Active Session</span>
+          <span className="title">Session {data?.uuid}</span>
           <div className="session-details-item">
             <img src={CalendarIcon} />
-            <span>{new Date(data!.start_date).toLocaleString()}</span>
+            <span>Start: {new Date(data!.start_date).toLocaleString()}</span>
+          </div>
+          <div className="session-details-item">
+            <img src={CalendarIcon} />
+            <span>End: {new Date(data!.end_date).toLocaleString()}</span>
           </div>
         </div>
       </>
