@@ -52,6 +52,11 @@
     cursor: pointer;
 }
 
+a {
+    text-decoration: none !important;
+    color: #fff !important;
+}
+
 @include media-breakpoint-down(sm) {
     .notifications-wrapper {
         right: unset;

@@ -1,14 +1,12 @@
 import { ILogsSession } from "../../interfaces/ILogsSession"
 import CalendarIcon from "../../assets/svg/icons/calendar.svg"
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 interface CurrentSessionDetailsProps {
   data: ILogsSession | null
 }
 
 export default function SessionDetails({ data }: CurrentSessionDetailsProps) {
-  const navigate = useNavigate()
-
   function renderDetails() {
     return (
       <>
@@ -27,13 +25,11 @@ export default function SessionDetails({ data }: CurrentSessionDetailsProps) {
     )
   }
 
-  function navigateToSession() {
-    navigate(`/sessions/${data?.uuid}`)
-  }
-
   return (
-    <div onClick={navigateToSession} className={`session-details-wrapper ${data != null ? "available-session" : ""}`}>
-      {data == null ? "There is no session running" : renderDetails()}
+    <div className="session-details-wrapper available-session">
+      <Link to={`/sessions/${data?.uuid}`}>
+        {renderDetails()}
+      </Link>
     </div>
   )
 }

@@ -1,4 +1,3 @@
-import "./styles.scss"
 import { ILogsSession } from "../../interfaces/ILogsSession"
 import CalendarIcon from "../../assets/svg/icons/calendar.svg"
 import { useNavigate } from "react-router-dom"
@@ -25,7 +24,9 @@ export default function CurrentSessionDetails({ data }: CurrentSessionDetailsPro
   }
 
   function navigateToSession() {
-    navigate(`/sessions/${data?.uuid}`)
+    if (data) {
+      navigate(`/sessions/${data?.uuid}`)
+    }
   }
 
   return (
