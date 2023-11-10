@@ -137,7 +137,7 @@ export default function SessionPage() {
   function renderSleepwalkingEvents() {
     return sleepwalkingEvents?.map((e, id) => {
       return (
-        <div className="event-wrapper">
+        <div className="event-wrapper" key={id}>
            <div className="details-row">
             <img src={CalendarIcon} />
             <span>Start: {getLocaleDateString(e.start_date)}</span>
