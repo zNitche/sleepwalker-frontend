@@ -47,7 +47,10 @@ export function BarChart({ labels, datasets }: BarChartProps) {
       },
       legend: {
         display: false
-      }
+      },
+      // customCanvasBackgroundColor: {
+      //   color: "#fff",
+      // }
     }
   }
 
