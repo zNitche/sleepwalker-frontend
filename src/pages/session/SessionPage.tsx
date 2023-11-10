@@ -1,7 +1,7 @@
-import { useState, useEffect, SetStateAction, Dispatch } from "react"
+import { useState, useEffect, SetStateAction, Dispatch, useContext } from "react"
 import FlexLoader from "../../components/flex_loader/FlexLoader"
 import "./styles.scss"
-import { httpGet } from "../../utils/httpUtils"
+import { httpGet, httpPost } from "../../utils/httpUtils"
 import { useParams } from "react-router-dom"
 import { ILogsSession } from "../../interfaces/ILogsSession"
 import { IBodySensorsLog } from "../../interfaces/IBodySensorsLog"
@@ -11,11 +11,17 @@ import CalendarIcon from "../../assets/svg/icons/calendar.svg"
 import { getLocaleDateString } from "../../utils/dateUtils"
 import { IChartDataset } from "../../interfaces/IChartDataset"
 import { LineChart } from "../../components/charts/LineChart"
+import { Button } from "@mui/material"
+import { NotificationsContext } from "../../context/contexes"
+import { NotificationTypeEnum } from "../../enums/NotificationTypeEnum"
 
 export default function SessionPage() {
   const { id } = useParams()
+  let { addNotification } = useContext(NotificationsContext)
 
   const [isLoading, setIsLoading] = useState(true)
+  const [isSessionCloseLoading, setIsSessionCloseLoading] = useState(false)
+
   const [session, setSession] = useState<ILogsSession | null>(null)
 
   const [bodySensorsLogs, setBodySensorsLogs] = useState<IBodySensorsLog[] | null>(null)
@@ -116,8 +122,8 @@ export default function SessionPage() {
 
     return (
       <>
-      {renderLineChart(labels, [temperatureDataset], 10)}
-      {renderLineChart(labels, [humidityDataset], 10)}
+        {renderLineChart(labels, [temperatureDataset], 10)}
+        {renderLineChart(labels, [humidityDataset], 10)}
       </>
     )
   }
@@ -138,7 +144,7 @@ export default function SessionPage() {
     return sleepwalkingEvents?.map((e, id) => {
       return (
         <div className="event-wrapper" key={id}>
-           <div className="details-row">
+          <div className="details-row">
             <img src={CalendarIcon} />
             <span>Start: {getLocaleDateString(e.start_date)}</span>
           </div>
@@ -151,10 +157,38 @@ export default function SessionPage() {
     })
   }
 
+  async function closeSession() {
+    setIsSessionCloseLoading(true)
+
+    const response = await httpPost(`/sessions/${id}/close/`)
+
+    if (response.status == 200) {
+      addNotification("Session has been closed successfully", 3000, NotificationTypeEnum.Success)
+    } else {
+      addNotification("Error while closing session", 3000, NotificationTypeEnum.Error)
+    }
+
+    setIsSessionCloseLoading(false)
+  }
+
+  function renderCloseButton() {
+    return (
+      <Button
+        type="button"
+        variant="contained"
+        disabled={isSessionCloseLoading}
+        onClick={closeSession}
+      >
+        Close
+      </Button>
+    )
+  }
+
   function renderContent() {
     return (
       <>
         <span className="title">Session</span>
+        {session?.end_date == null ? renderCloseButton() : null}
         <div className="section-wrapper">
           <div className="details-row">
             <img src={CalendarIcon} />

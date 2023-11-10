@@ -8,6 +8,10 @@
     gap: 15px;
     word-break: break-word;
 
+    button {
+        background-color: $primaryBlueColor;
+    }
+
     .title {
         font-size: 22px;
         font-weight: 500;
