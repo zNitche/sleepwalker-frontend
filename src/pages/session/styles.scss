@@ -6,20 +6,47 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    word-break: break-word;
 
-    .pagination-nav-wrapper {
-        width: 100%;
+    .title {
+        font-size: 22px;
+        font-weight: 500;
+    }
+
+    .section-wrapper {
+        background-color: $backgroundSecondaryColor;
+        padding: 15px;
+        gap: 10px;
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
+        flex-direction: column;
+        justify-content: center;
 
-        img {
-            cursor: pointer;
+        .section-title {
+            font-size: 20px;
+            font-weight: 400;
         }
 
-        .next-page-nav {
-            margin-left: auto;
+        .details-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .event-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 10px;
+        }
+
+        .chart-container {
+            overflow-x: auto;
+        }
+
+        .chart-wrapper {
+            height: 280px;
+            padding: 15px;
+            border-radius: 5px;
         }
     }
 }
-
