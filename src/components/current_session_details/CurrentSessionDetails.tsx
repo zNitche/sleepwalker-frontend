@@ -1,6 +1,7 @@
 import { ILogsSession } from "../../interfaces/ILogsSession"
 import CalendarIcon from "../../assets/svg/icons/calendar.svg"
 import { useNavigate } from "react-router-dom"
+import { getLocaleDateString } from "../../utils/dateUtils"
 
 interface CurrentSessionDetailsProps {
   data: ILogsSession | null
@@ -16,7 +17,7 @@ export default function CurrentSessionDetails({ data }: CurrentSessionDetailsPro
           <span className="title">Active Session</span>
           <div className="session-details-item">
             <img src={CalendarIcon} />
-            <span>{new Date(data!.start_date).toLocaleString()}</span>
+            <span>{getLocaleDateString(data!.start_date)}</span>
           </div>
         </div>
       </>

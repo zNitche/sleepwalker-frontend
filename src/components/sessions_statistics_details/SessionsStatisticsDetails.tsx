@@ -2,7 +2,7 @@ import "./styles.scss"
 import CalendarIcon from "../../assets/svg/icons/calendar.svg"
 import NumbersIcon from "../../assets/svg/icons/numbers.svg"
 import { ILogsSessionsStatistics } from "../../interfaces/ILogsSessionsStatistics"
-import { BarChart } from "../bar_chart/BarChart"
+import { BarChart } from "../charts/BarChart"
 import { IChartDataset } from "../../interfaces/IChartDataset"
 
 interface SessionsStatisticsDetailsProps {
