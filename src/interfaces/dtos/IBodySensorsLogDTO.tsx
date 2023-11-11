@@ -1,4 +1,4 @@
-export interface IBodySensorsLog {
+export interface IBodySensorsLogDTO {
   date: string
   heart_beat: number
   acceleration_x: number

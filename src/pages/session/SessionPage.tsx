@@ -3,10 +3,10 @@ import FlexLoader from "../../components/flex_loader/FlexLoader"
 import "./styles.scss"
 import { httpGet, httpPost } from "../../utils/httpUtils"
 import { useParams } from "react-router-dom"
-import { ILogsSession } from "../../interfaces/ILogsSession"
-import { IBodySensorsLog } from "../../interfaces/IBodySensorsLog"
-import { IEnvironmentSensorsLog } from "../../interfaces/IEnvironmentSensorsLog"
-import { ISleepwalkingEvent } from "../../interfaces/ISleepwalkingEvent"
+import { ILogsSessionDTO } from "../../interfaces/dtos/ILogsSessionDTO"
+import { IBodySensorsLogDTO } from "../../interfaces/dtos/IBodySensorsLogDTO"
+import { IEnvironmentSensorsLogDTO } from "../../interfaces/dtos/IEnvironmentSensorsLogDTO"
+import { ISleepwalkingEventDTO } from "../../interfaces/dtos/ISleepwalkingEventDTO"
 import CalendarIcon from "../../assets/svg/icons/calendar.svg"
 import { getLocaleDateString } from "../../utils/dateUtils"
 import { IChartDataset } from "../../interfaces/IChartDataset"
@@ -22,11 +22,11 @@ export default function SessionPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [isSessionCloseLoading, setIsSessionCloseLoading] = useState(false)
 
-  const [session, setSession] = useState<ILogsSession | null>(null)
+  const [session, setSession] = useState<ILogsSessionDTO | null>(null)
 
-  const [bodySensorsLogs, setBodySensorsLogs] = useState<IBodySensorsLog[] | null>(null)
-  const [environmentSensorsLogs, setEnvironmentSensorsLogs] = useState<IEnvironmentSensorsLog[] | null>(null)
-  const [sleepwalkingEvents, setSleepwalkingEvents] = useState<ISleepwalkingEvent[] | null>(null)
+  const [bodySensorsLogs, setBodySensorsLogs] = useState<IBodySensorsLogDTO[] | null>(null)
+  const [environmentSensorsLogs, setEnvironmentSensorsLogs] = useState<IEnvironmentSensorsLogDTO[] | null>(null)
+  const [sleepwalkingEvents, setSleepwalkingEvents] = useState<ISleepwalkingEventDTO[] | null>(null)
 
   useEffect(() => {
     getSessionData()

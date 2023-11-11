@@ -1,10 +1,10 @@
-import { ILogsSession } from "../../interfaces/ILogsSession"
+import { ILogsSessionDTO } from "../../interfaces/dtos/ILogsSessionDTO"
 import CalendarIcon from "../../assets/svg/icons/calendar.svg"
 import { useNavigate } from "react-router-dom"
 import { getLocaleDateString } from "../../utils/dateUtils"
 
 interface CurrentSessionDetailsProps {
-  data: ILogsSession | null
+  data: ILogsSessionDTO | null
 }
 
 export default function CurrentSessionDetails({ data }: CurrentSessionDetailsProps) {

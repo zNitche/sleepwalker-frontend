@@ -1,12 +1,12 @@
 import "./styles.scss"
 import CalendarIcon from "../../assets/svg/icons/calendar.svg"
 import NumbersIcon from "../../assets/svg/icons/numbers.svg"
-import { ILogsSessionsStatistics } from "../../interfaces/ILogsSessionsStatistics"
+import { ILogsSessionsStatisticsDTO } from "../../interfaces/dtos/ILogsSessionsStatisticsDTO"
 import { BarChart } from "../charts/BarChart"
 import { IChartDataset } from "../../interfaces/IChartDataset"
 
 interface SessionsStatisticsDetailsProps {
-  data: ILogsSessionsStatistics
+  data: ILogsSessionsStatisticsDTO
 }
 
 export default function SessionsStatisticsDetails({ data }: SessionsStatisticsDetailsProps) {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import FlexLoader from "../../components/flex_loader/FlexLoader"
 import "./styles.scss"
 import { httpGet } from "../../utils/httpUtils"
-import { ILogsSession } from "../../interfaces/ILogsSession"
+import { ILogsSessionDTO } from "../../interfaces/dtos/ILogsSessionDTO"
 import PrevIcon from "../../assets/svg/icons/arrow_back.svg"
 import NextIcon from "../../assets/svg/icons/arrow_forward.svg"
 import SessionDetails from "../../components/session_details/SessionDetails"
@@ -13,7 +13,7 @@ export default function SessionsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const [isLoading, setIsLoading] = useState(true)
-  const [sessions, setSessions] = useState<ILogsSession[]>([])
+  const [sessions, setSessions] = useState<ILogsSessionDTO[]>([])
 
   const [currentPage, setCurrentPage] = useState<number>(0)
   const [prevPageExists, setPrevPageExists] = useState<string | null>(null)

@@ -1,4 +1,4 @@
-export interface ILogsSessionsStatistics {
+export interface ILogsSessionsStatisticsDTO {
   logs_sessions: number
   first_session_start_date: string
   last_session_start_date: string
