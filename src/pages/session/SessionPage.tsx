@@ -8,6 +8,9 @@ import { IBodySensorsLogDTO } from "../../interfaces/dtos/IBodySensorsLogDTO"
 import { IEnvironmentSensorsLogDTO } from "../../interfaces/dtos/IEnvironmentSensorsLogDTO"
 import { ISleepwalkingEventDTO } from "../../interfaces/dtos/ISleepwalkingEventDTO"
 import CalendarIcon from "../../assets/svg/icons/calendar.svg"
+import ThermometerIcon from "../../assets/svg/icons/thermometer.svg"
+import HumidityIcon from "../../assets/svg/icons/humidity.svg"
+import HeartBeatIcon from "../../assets/svg/icons/heart_beat.svg"
 import { getLocaleDateString } from "../../utils/dateUtils"
 import { IChartDataset } from "../../interfaces/IChartDataset"
 import { LineChart } from "../../components/charts/LineChart"
@@ -157,6 +160,41 @@ export default function SessionPage() {
     })
   }
 
+  function renderSensorsMinMaxSummary() {
+    const minMaxTemperature = {
+      min: Math.min(...environmentSensorsLogs!.map(item => item.temperature)),
+      max: Math.max(...environmentSensorsLogs!.map(item => item.temperature)),
+      icon: ThermometerIcon
+    }
+    const minMaxHeartBeat = {
+      min: Math.min(...bodySensorsLogs!.map(item => item.heart_beat)),
+      max: Math.max(...bodySensorsLogs!.map(item => item.heart_beat)),
+      icon: HeartBeatIcon
+    }
+    const minMaxHumidity = {
+      min: Math.min(...environmentSensorsLogs!.map(item => item.humidity)),
+      max: Math.max(...environmentSensorsLogs!.map(item => item.humidity)),
+      icon: HumidityIcon
+    }
+
+    const data = [minMaxHeartBeat, minMaxTemperature, minMaxHumidity]
+
+    return data.map((values, id) => {
+      return (
+        <div className="section-wrapper" key={id}>
+          <div className="details-row">
+            <img src={values.icon} />
+            <span>Max: {values.max}</span>
+          </div>
+          <div className="details-row">
+            <img src={values.icon} />
+            <span>Min: {values.min}</span>
+          </div>
+        </div>
+      )
+    })
+  }
+
   async function closeSession() {
     setIsSessionCloseLoading(true)
 
@@ -199,6 +237,8 @@ export default function SessionPage() {
             <span>End: {getLocaleDateString(session!.end_date)}</span>
           </div>
         </div>
+
+        {bodySensorsLogs && environmentSensorsLogs ? renderSensorsMinMaxSummary() : null}
 
         <div className="section-wrapper">
           <span className="section-title">Heart beat</span>
