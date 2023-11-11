@@ -162,18 +162,18 @@ export default function SessionPage() {
 
   function renderSensorsMinMaxSummary() {
     const minMaxTemperature = {
-      min: Math.min(...environmentSensorsLogs!.map(item => item.temperature)),
-      max: Math.max(...environmentSensorsLogs!.map(item => item.temperature)),
+      min: Math.min(...environmentSensorsLogs!.map(item => item.temperature), 0),
+      max: Math.max(...environmentSensorsLogs!.map(item => item.temperature), 0),
       icon: ThermometerIcon
     }
     const minMaxHeartBeat = {
-      min: Math.min(...bodySensorsLogs!.map(item => item.heart_beat)),
-      max: Math.max(...bodySensorsLogs!.map(item => item.heart_beat)),
+      min: Math.min(...bodySensorsLogs!.map(item => item.heart_beat), 0),
+      max: Math.max(...bodySensorsLogs!.map(item => item.heart_beat), 0),
       icon: HeartBeatIcon
     }
     const minMaxHumidity = {
-      min: Math.min(...environmentSensorsLogs!.map(item => item.humidity)),
-      max: Math.max(...environmentSensorsLogs!.map(item => item.humidity)),
+      min: Math.min(...environmentSensorsLogs!.map(item => item.humidity), 0),
+      max: Math.max(...environmentSensorsLogs!.map(item => item.humidity), 0),
       icon: HumidityIcon
     }
 
@@ -225,7 +225,7 @@ export default function SessionPage() {
   function renderContent() {
     return (
       <>
-        <span className="title">Session</span>
+        <span className="title">Session details</span>
         {session?.end_date == null ? renderCloseButton() : null}
         <div className="section-wrapper">
           <div className="details-row">
