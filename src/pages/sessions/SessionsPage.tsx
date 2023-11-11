@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react"
 import FlexLoader from "../../components/flex_loader/FlexLoader"
 import "./styles.scss"
-import { httpGet } from "../../utils/httpUtils"
+import { httpGet, parseFilters } from "../../utils/httpUtils"
 import { ILogsSessionDTO } from "../../interfaces/dtos/ILogsSessionDTO"
 import PrevIcon from "../../assets/svg/icons/arrow_back.svg"
 import NextIcon from "../../assets/svg/icons/arrow_forward.svg"
 import SessionDetails from "../../components/session_details/SessionDetails"
 import { useSearchParams } from "react-router-dom"
-
+import SessionsDateFilters from "../../components/sessions_filters/SessionsDateFilters"
+import { IFilter } from "../../interfaces/IFilter"
 
 export default function SessionsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
+
+  const [filters, setFilters] = useState<IFilter[]>([])
 
   const [isLoading, setIsLoading] = useState(true)
   const [sessions, setSessions] = useState<ILogsSessionDTO[]>([])
@@ -29,10 +32,17 @@ export default function SessionsPage() {
     }
   }, [currentPage])
 
+  useEffect(() => {
+    if (currentPage > 0) {
+      setCurrentPageHandler(1)
+      setupData()
+    }
+  }, [filters])
+
   async function setupData() {
     setIsLoading(true)
 
-    const response = await httpGet("/sessions", { "page": currentPage.toString() })
+    const response = await httpGet("/sessions", { "page": currentPage.toString(), ...parseFilters(filters) })
 
     if (response.status == 200) {
       setPrevPageExists(response.data.pagination.previous)
@@ -87,6 +97,7 @@ export default function SessionsPage() {
 
   return (
     <div className="sessions-page-wrapper">
+      <SessionsDateFilters filters={filters} setFilters={setFilters} />
       {isLoading ? <FlexLoader /> : renderContent()}
     </div>
   )

@@ -1,4 +1,5 @@
 import { config } from "../config"
+import { IFilter } from "../interfaces/IFilter"
 import { getAuthToken } from "./authUtils"
 
 export async function httpGet(url: string, queryParams?: Record<string, string>, notAuth?: boolean) {
@@ -122,4 +123,14 @@ export async function httpDelete(url: string, notAuth?: boolean) {
   } catch (error) { }
 
   return response
+}
+
+export function parseFilters(filters: IFilter[]) {
+  const parsedFilters: Record<string, string> = {}
+
+  for (let filter of filters) {
+    parsedFilters[filter.name] = filter.value
+  }
+
+  return parsedFilters
 }
