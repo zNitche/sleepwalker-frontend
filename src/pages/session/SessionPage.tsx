@@ -1,8 +1,8 @@
 import { useState, useEffect, SetStateAction, Dispatch, useContext } from "react"
 import FlexLoader from "../../components/flex_loader/FlexLoader"
 import "./styles.scss"
-import { httpGet, httpPost } from "../../utils/httpUtils"
-import { useParams } from "react-router-dom"
+import { httpDelete, httpGet, httpPost } from "../../utils/httpUtils"
+import { useNavigate, useParams } from "react-router-dom"
 import { ILogsSessionDTO } from "../../interfaces/dtos/ILogsSessionDTO"
 import { IBodySensorsLogDTO } from "../../interfaces/dtos/IBodySensorsLogDTO"
 import { IEnvironmentSensorsLogDTO } from "../../interfaces/dtos/IEnvironmentSensorsLogDTO"
@@ -11,19 +11,24 @@ import CalendarIcon from "../../assets/svg/icons/calendar.svg"
 import ThermometerIcon from "../../assets/svg/icons/thermometer.svg"
 import HumidityIcon from "../../assets/svg/icons/humidity.svg"
 import HeartBeatIcon from "../../assets/svg/icons/heart_beat.svg"
+import DeleteIcon from "../../assets/svg/icons/delete.svg"
 import { getLocaleDateString } from "../../utils/dateUtils"
 import { IChartDataset } from "../../interfaces/IChartDataset"
 import { LineChart } from "../../components/charts/LineChart"
 import { Button } from "@mui/material"
 import { NotificationsContext } from "../../context/contexes"
 import { NotificationTypeEnum } from "../../enums/NotificationTypeEnum"
+import RemoveSessionModal from "../../components/remove_session_modal/RemoveSessionModal"
 
 export default function SessionPage() {
   const { id } = useParams()
   let { addNotification } = useContext(NotificationsContext)
+  const navigate = useNavigate()
 
   const [isLoading, setIsLoading] = useState(true)
   const [isSessionCloseLoading, setIsSessionCloseLoading] = useState(false)
+
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
 
   const [session, setSession] = useState<ILogsSessionDTO | null>(null)
 
@@ -62,6 +67,18 @@ export default function SessionPage() {
     if (response.status == 200) {
       setter(response.data)
     }
+  }
+
+  async function removeSession() {
+    const response = await httpDelete(`/sessions/${id}/remove`)
+
+    if (response.status == 200) {
+      addNotification("Session has been removed successfully", 3000, NotificationTypeEnum.Success)
+    } else {
+      addNotification("Error while removing session", 3000, NotificationTypeEnum.Error)
+    }
+
+    navigate(`/sessions`)
   }
 
   function renderHeartBeatChart() {
@@ -225,7 +242,10 @@ export default function SessionPage() {
   function renderContent() {
     return (
       <>
-        <span className="title">Session details</span>
+        <div className="title">
+          <span>Session details</span>
+          <img src={DeleteIcon} onClick={() => { setIsDeleteModalOpen(true) }} />
+        </div>
         {session?.end_date == null ? renderCloseButton() : null}
         <div className="section-wrapper">
           <div className="details-row">
@@ -264,8 +284,11 @@ export default function SessionPage() {
   }
 
   return (
-    <div className="session-page-wrapper">
-      {isLoading ? <FlexLoader /> : renderContent()}
-    </div>
+    <>
+      <RemoveSessionModal isOpen={isDeleteModalOpen} setIsOpen={setIsDeleteModalOpen} sessionId={id} deletionCallback={removeSession} />
+      <div className="session-page-wrapper">
+        {isLoading ? <FlexLoader /> : renderContent()}
+      </div>
+    </>
   )
 }

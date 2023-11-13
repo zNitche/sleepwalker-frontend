@@ -61,6 +61,38 @@ a {
     color: #fff !important;
 }
 
+.cancel-btn {
+    background-color: #6c757d !important;
+
+    &:hover {
+        background-color: #606569 !important;
+        border-color: #606569 !important;
+        box-shadow: none !important;
+    }
+
+    &:active {
+        box-shadow: none !important;
+        background-color: #606569 !important;
+        border-color: #606569 !important;
+    }
+}
+
+.remove-btn {
+    background-color: #dc3545 !important;
+
+    &:hover {
+        background-color: #dc3545 !important;
+        border-color: #dc3545 !important;
+        box-shadow: none !important;
+    }
+
+    &:active {
+        box-shadow: none !important;
+        background-color: #dc3545 !important;
+        border-color: #dc3545 !important;
+    }
+}
+
 @include media-breakpoint-down(sm) {
     .notifications-wrapper {
         right: unset;

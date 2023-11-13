@@ -13,8 +13,15 @@
     }
 
     .title {
+        display: flex;
+        align-items: center;
         font-size: 22px;
         font-weight: 500;
+
+        img {
+            margin-left: auto;
+            cursor: pointer;
+        }
     }
 
     .section-wrapper {
