@@ -1,0 +1,39 @@
+@import "../../styles/variables";
+@import "bootstrap/scss/bootstrap.scss";
+
+.modal-wrapper {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 10px;
+    background-color: $backgroundActiveItemColor;
+    border-radius: 5px;
+    outline: none;
+
+    .title {
+        display: flex;
+
+        font-size: 18px;
+        font-weight: 500;
+
+        img {
+            margin-left: auto;
+            cursor: pointer;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .modal-wrapper {
+        width: 90%;
+    }
+}
